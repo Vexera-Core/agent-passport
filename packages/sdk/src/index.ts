@@ -13,3 +13,9 @@ export type {
   SecurityGateReason,
   SecurityGateResult,
 } from "./types.js";
+
+export {
+  normalizeIdentity,
+  parseIdentityJson,
+  parseIdentityMarkdown,
+} from "./parsers.js";

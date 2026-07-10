@@ -29,6 +29,7 @@
     "directory": "packages/sdk"
   },
   "dependencies": {
-    "open-agent-passport-schema": "workspace:*"
+    "open-agent-passport-schema": "workspace:*",
+    "yaml": "^2.8.0"
   }
 }
