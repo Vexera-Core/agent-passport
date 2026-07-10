@@ -50,14 +50,6 @@ web_modules/
 # Optional npm cache directory
 .npm
 
-# agents
-.agents
-
-# workspace outputs
-dist/
-coverage/
-.turbo/
-
 # Optional eslint cache
 .eslintcache
 

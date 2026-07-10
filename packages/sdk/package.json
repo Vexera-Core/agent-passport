@@ -1,0 +1,29 @@
+{
+  "name": "open-agent-passport",
+  "version": "0.1.0",
+  "description": "Open-source TypeScript toolkit for parsing, normalizing, validating, hashing, and rendering portable AI agent passports from JSON or Markdown.",
+  "license": "MIT",
+  "type": "module",
+  "sideEffects": false,
+  "files": ["dist", "README.md"],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "engines": { "node": ">=20" },
+  "publishConfig": { "access": "public" },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vexera-core/agent-passport.git",
+    "directory": "packages/sdk"
+  },
+  "dependencies": {
+    "open-agent-passport-schema": "workspace:*"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "name": "open-agent-passport-cli",
+  "version": "0.1.0",
+  "description": "CLI for validating agent declarations and building deterministic Agent Passport documents.",
+  "license": "MIT",
+  "type": "module",
+  "files": ["dist", "README.md"],
+  "bin": { "open-agent-passport": "./dist/cli.js" },
+  "engines": { "node": ">=20" },
+  "publishConfig": { "access": "public" },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vexera-core/agent-passport.git",
+    "directory": "packages/cli"
+  },
+  "dependencies": {
+    "commander": "^13.1.0",
+    "open-agent-passport": "workspace:*"
+  }
+}

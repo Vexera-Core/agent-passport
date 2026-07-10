@@ -53,11 +53,6 @@ web_modules/
 # agents
 .agents
 
-# workspace outputs
-dist/
-coverage/
-.turbo/
-
 # Optional eslint cache
 .eslintcache
 

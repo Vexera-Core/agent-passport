@@ -1,0 +1,27 @@
+{
+  "name": "open-agent-passport-schema",
+  "version": "0.1.0",
+  "description": "Portable JSON Schemas for AI agent declarations, passports, and verification receipts.",
+  "license": "MIT",
+  "type": "module",
+  "sideEffects": false,
+  "files": ["dist", "schemas", "README.md"],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./schemas/*": "./schemas/*"
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "engines": { "node": ">=20" },
+  "publishConfig": { "access": "public" },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vexera-core/agent-passport.git",
+    "directory": "packages/schema"
+  }
+}
