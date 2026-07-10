@@ -16,6 +16,11 @@
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsup src/index.ts --format esm,cjs --dts --clean",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
   "engines": { "node": ">=20" },
   "publishConfig": { "access": "public" },
   "repository": {

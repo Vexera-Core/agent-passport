@@ -1,0 +1,15 @@
+export type {
+  AgentComponent,
+  AgentIdentity,
+  AgentPassport,
+  AgentTool,
+  JsonPrimitive,
+  JsonValue,
+  NormalizedIdentity,
+  PassportBuildOptions,
+  PassportBuildResult,
+  PassportVerificationResult,
+  ProofReceipt,
+  SecurityGateReason,
+  SecurityGateResult,
+} from "./types.js";
