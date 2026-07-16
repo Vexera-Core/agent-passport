@@ -2,7 +2,7 @@
 
 # Agent Passport
 
-### Parse. Normalize. Verifying SDK.
+### Parse. Normalize. Verify. Transport.
 
 **Open-source TypeScript toolkit for turning JSON or Markdown agent declarations into portable, inspectable Agent Passport documents.**
 
@@ -39,6 +39,88 @@ flowchart LR
 ```
 
 The package reads declarations. It does not run agents, execute tools, upload memory, hold keys, or claim that an agent passed a benchmark.
+
+## Passport Transport
+
+The build pipeline writes three source files into `.passport/`:
+
+```text
+.passport/
+  normalized-identity.json
+  agent-passport.json
+  proof-receipt.json
+```
+
+Those files can then be transported as one metadata JSON envelope:
+
+```text
+.passport/
+  passport-metadata.json
+```
+
+```mermaid
+flowchart LR
+    INPUT["agent.md or identity.json"] --> NORMALIZED["normalized-identity.json"]
+    NORMALIZED --> GATE["security gate"]
+    GATE --> PASSPORT["agent-passport.json"]
+    PASSPORT --> RECEIPT["proof-receipt.json"]
+    NORMALIZED --> META["passport-metadata.json"]
+    PASSPORT --> META
+    RECEIPT --> META
+```
+
+`passport-metadata.json` is the portable handoff file. It keeps hashes, IDs, security status, proof receipt status, and file digests together so another system can understand what was generated without trusting Markdown prose.
+
+The metadata file is not a live verification claim. It says: this identity was normalized, checked locally, hashed, and packaged for transport.
+
+## Metadata Shape
+
+```json
+{
+  "metadataVersion": "1.0.0",
+  "transport": {
+    "status": "portable",
+    "source": ".passport"
+  },
+  "agent": {
+    "id": "example.reviewer",
+    "name": "Example Reviewer"
+  },
+  "passport": {
+    "passportId": "passport_sha256_...",
+    "identityHash": "sha256_...",
+    "passportHash": "sha256_...",
+    "verificationStatus": "declared",
+    "proofStatus": "offchain"
+  },
+  "securityGate": {
+    "status": "passed",
+    "warnings": [],
+    "reasons": []
+  },
+  "receipt": {
+    "receiptId": "receipt_sha256_...",
+    "network": "offchain",
+    "status": "ready"
+  },
+  "files": {
+    "normalizedIdentity": {
+      "path": "normalized-identity.json",
+      "sha256": "..."
+    },
+    "agentPassport": {
+      "path": "agent-passport.json",
+      "sha256": "..."
+    },
+    "proofReceipt": {
+      "path": "proof-receipt.json",
+      "sha256": "..."
+    }
+  }
+}
+```
+
+The transport metadata repeats only routing and proof context. It does not include private keys, raw memory, shell output, hidden prompts, or live benchmark claims.
 
 ## Packages
 
@@ -83,6 +165,13 @@ CLI after release:
 
 ```bash
 npx open-agent-passport-cli build agent.md
+```
+
+Local metadata helper today:
+
+```bash
+pnpm metadata:explain
+pnpm metadata:build -- examples/passport-output .passport/passport-metadata.json
 ```
 
 ## Input Schema
@@ -241,6 +330,7 @@ Publishing belongs on the public [npm registry](https://www.npmjs.com/) using np
 | Shell permission | Rejected |
 | Arbitrary filesystem permission | Rejected |
 | Benchmark status | Never inferred from a declaration |
+| Transport metadata | Portable summary; not proof of live execution |
 
 ## Current Status
 
