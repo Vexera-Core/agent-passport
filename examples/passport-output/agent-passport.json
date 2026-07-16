@@ -1,0 +1,45 @@
+{
+  "passportId": "passport_sha256_example_reviewer",
+  "identityHash": "sha256_example_identity_hash",
+  "normalizedIdentity": {
+    "schemaVersion": "1.0.0",
+    "identity": {
+      "id": "example.reviewer",
+      "name": "Example Reviewer",
+      "version": "1.0.0",
+      "description": "Reviews structured agent declarations."
+    },
+    "runtime": {
+      "environment": "node",
+      "language": "typescript"
+    },
+    "components": [
+      {
+        "id": "review",
+        "type": "capability",
+        "description": "Reviews structured input."
+      }
+    ],
+    "tools": [],
+    "permissions": {
+      "filesystem": "none",
+      "network": "none",
+      "shell": false
+    },
+    "memory": {
+      "mode": "none",
+      "rawContentIncluded": false
+    },
+    "metadata": {},
+    "notes": "Example identity used for metadata transport documentation."
+  },
+  "securityGate": {
+    "status": "passed",
+    "warnings": [],
+    "reasons": []
+  },
+  "verificationStatus": "declared",
+  "proofStatus": "offchain",
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-07-15T00:00:00.000Z"
+}

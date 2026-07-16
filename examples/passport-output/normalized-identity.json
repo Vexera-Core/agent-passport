@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "1.0.0",
+  "identity": {
+    "id": "example.reviewer",
+    "name": "Example Reviewer",
+    "version": "1.0.0",
+    "description": "Reviews structured agent declarations."
+  },
+  "runtime": {
+    "environment": "node",
+    "language": "typescript"
+  },
+  "components": [
+    {
+      "id": "review",
+      "type": "capability",
+      "description": "Reviews structured input."
+    }
+  ],
+  "tools": [],
+  "permissions": {
+    "filesystem": "none",
+    "network": "none",
+    "shell": false
+  },
+  "memory": {
+    "mode": "none",
+    "rawContentIncluded": false
+  },
+  "metadata": {},
+  "notes": "Example identity used for metadata transport documentation."
+}

@@ -1,0 +1,46 @@
+{
+  "metadataVersion": "1.0.0",
+  "generatedAt": "2026-07-16T02:52:22.110Z",
+  "transport": {
+    "status": "portable",
+    "source": "examples\\passport-output"
+  },
+  "agent": {
+    "id": "example.reviewer",
+    "name": "Example Reviewer",
+    "version": "1.0.0"
+  },
+  "passport": {
+    "passportId": "passport_sha256_example_reviewer",
+    "identityHash": "sha256_example_identity_hash",
+    "passportHash": "sha256_example_passport_hash",
+    "verificationStatus": "declared",
+    "proofStatus": "offchain",
+    "schemaVersion": "1.0.0"
+  },
+  "securityGate": {
+    "status": "passed",
+    "warnings": [],
+    "reasons": []
+  },
+  "receipt": {
+    "receiptId": "receipt_sha256_example_reviewer",
+    "network": "offchain",
+    "status": "ready",
+    "createdAt": "2026-07-15T00:00:00.000Z"
+  },
+  "files": {
+    "normalizedIdentity": {
+      "path": "normalized-identity.json",
+      "sha256": "84b347608abadc0a0a84ca54a7a2c01ca71d100bba47b5a149bc935ae21ee2d9"
+    },
+    "agentPassport": {
+      "path": "agent-passport.json",
+      "sha256": "263ef21a5778ad51332cd22cd8b5357af71c14219ce8faf640eedcf97cf59efc"
+    },
+    "proofReceipt": {
+      "path": "proof-receipt.json",
+      "sha256": "4409e64315e7a2534bffb8190b6ecfc0b8226ce7dea707ecb2df4b0fcb3fd648"
+    }
+  }
+}

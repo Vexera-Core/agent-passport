@@ -174,6 +174,8 @@ pnpm metadata:explain
 pnpm metadata:build -- examples/passport-output .passport/passport-metadata.json
 ```
 
+Example output lives in `examples/passport-output/`, including a generated `passport-metadata.json`.
+
 ## Input Schema
 
 Agent declarations will use a small JSON shape:
