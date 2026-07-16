@@ -15,7 +15,9 @@
     "lint": "pnpm -r --if-present lint",
     "check": "pnpm lint && pnpm typecheck && pnpm test && pnpm build",
     "metadata:explain": "node scripts/metadata/explain-passport-transport.mjs",
-    "metadata:build": "node scripts/metadata/build-passport-metadata.mjs"
+    "metadata:build": "node scripts/metadata/build-passport-metadata.mjs",
+    "rust:test": "cargo test --manifest-path rust/Cargo.toml",
+    "rust:api": "cargo run --manifest-path rust/Cargo.toml -p agent-passport-api"
   },
   "devDependencies": {
     "@types/node": "^22.15.30",

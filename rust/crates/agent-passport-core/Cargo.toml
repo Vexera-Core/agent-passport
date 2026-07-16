@@ -1,0 +1,14 @@
+[package]
+name = "agent-passport-core"
+version = "0.1.0"
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "Offchain Agent Passport core types, hashing, receipts, and player IDs."
+
+[dependencies]
+hex.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+sha2.workspace = true
+

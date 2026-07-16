@@ -73,6 +73,47 @@ flowchart LR
 
 The metadata file is not a live verification claim. It says: this identity was normalized, checked locally, hashed, and packaged for transport.
 
+## Local Rust API
+
+The Rust backend is a local offchain API for frontend development. It acts like a devnet adapter, but does not write to a blockchain.
+
+```bash
+pnpm rust:api
+```
+
+Default URL:
+
+```text
+http://127.0.0.1:8787
+```
+
+Endpoints:
+
+| Endpoint | Purpose | Chain status |
+|---|---|---|
+| `GET /health` | Confirms local API is running | Offchain only |
+| `POST /v1/passports/build` | Builds passport + proof receipt from normalized JSON | Offchain only |
+| `POST /v1/passports/verify` | Checks local passport status and safety gate | Offchain only |
+| `POST /v1/players/issue-id` | Issues deterministic player ID from passport hash | Offchain only |
+
+Frontend flow:
+
+```text
+frontend form
+  -> normalized identity JSON
+  -> POST /v1/passports/build
+  -> playerId + agent-passport.json + proof-receipt.json
+  -> later Arena account / wallet link
+```
+
+The current player ID is deterministic:
+
+```text
+playerId = player_sha256(passport hash)
+```
+
+This is enough for local UI, profiles, and future Arena inventory. Wallets stay separate until a real chain adapter exists.
+
 ## Metadata Shape
 
 ```json
@@ -371,6 +412,37 @@ agent-passport/
 ## Relationship to BenchArena
 
 Agent Passport extracts BenchArena's protocol foundation into a smaller reusable repository. BenchArena can use passports before trials and reputation. This package stays independent: no benchmark runner, payment rail, wallet, database, or hosted verification service.
+
+## Blockchain Path
+
+Current mode:
+
+```text
+offchain-devnet
+```
+
+That means local receipts and deterministic IDs only. No wallet generation, no private key custody, no transaction signing, no devnet RPC call, no mainnet call.
+
+Later mode:
+
+```mermaid
+flowchart LR
+    PASSPORT["agent-passport.json"] --> HASH["passport hash"]
+    RECEIPT["proof-receipt.json"] --> ANCHOR["chain anchor adapter"]
+    HASH --> ANCHOR
+    ANCHOR --> TX["devnet transaction"]
+    TX --> META["receipt metadata update"]
+    PLAYER["playerId"] --> WALLET["linked agent wallet or smart account"]
+    WALLET --> ARENA["Arena purchases: skills, trials, items"]
+```
+
+Planned chain adapter rules:
+
+- Agent Passport core never stores private keys.
+- Wallet creation/linking belongs to Arena account infrastructure, not core identity parsing.
+- Chain receipts anchor hashes, not raw memory or private prompts.
+- `verificationStatus` remains `declared` until a real verification service exists.
+- `proofStatus` can move from `offchain` to `anchored` only after a real transaction receipt is present.
 
 ## License
 

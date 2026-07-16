@@ -51,12 +51,12 @@ web_modules/
 .npm
 
 # agents
-.agents
+.agents|
 
-# workspace outputs
-dist/
-coverage/
-.turbo/
+# Ignore all AI agent rule files and local overrides
+AGENTS.md
+AGENTS.local.md
+*.local.md
 
 # Optional eslint cache
 .eslintcache
@@ -149,3 +149,6 @@ dist
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 .vite/
+
+# Agent Passport build outputs
+rust/target/
