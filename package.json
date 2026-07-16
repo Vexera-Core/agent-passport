@@ -13,7 +13,9 @@
     "typecheck": "pnpm -r --if-present typecheck",
     "test": "pnpm -r --if-present test",
     "lint": "pnpm -r --if-present lint",
-    "check": "pnpm lint && pnpm typecheck && pnpm test && pnpm build"
+    "check": "pnpm lint && pnpm typecheck && pnpm test && pnpm build",
+    "metadata:explain": "node scripts/metadata/explain-passport-transport.mjs",
+    "metadata:build": "node scripts/metadata/build-passport-metadata.mjs"
   },
   "devDependencies": {
     "@types/node": "^22.15.30",
